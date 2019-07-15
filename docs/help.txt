@@ -1,0 +1,12 @@
+Hello! This is my simple weather bot
+What he can:
+    - every morning, at 7 a.m, it sends weather forecast for the current day due to your location
+    - change location using /choose_location command or keyboard
+    - show forecast for current day using /show_today command or keyboard
+    - show forecast for the next 5 days using /show_five command or keyboard
+
+You can see and use source it's source code by reference:
+https://github.com/grishasht/WeatherBot
+The best thing you could to do is to put a star for this project :)
+
+Heorhii Shtefanovych
