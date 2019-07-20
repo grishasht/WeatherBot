@@ -1,8 +1,8 @@
 from src.main.python.controller.command.command import Command
-from src.main.python.controller.util.printOneDay import Print
+from src.main.python.controller.util.printCurrent import Print
 
 
-class ShowToday(Command):
+class ShowMoment(Command):
 
     printOne = None
 
@@ -11,5 +11,5 @@ class ShowToday(Command):
         self.printOne = Print(self.data)
 
     def execute(self, bot, message):
-        bot.send_message(message.chat.id, 'Today\'s forecast')
+        bot.send_message(message.chat.id, 'Forecast for this moment')
         self.printOne.print_forecast(bot, message)

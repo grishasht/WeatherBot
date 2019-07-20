@@ -2,16 +2,17 @@ import telebot
 import src.main.python.controller.util.keys as tkn
 
 from src.main.python.controller.command \
-    import help, start, showToday, chooseLocation, showFive
+    import help, start, showToday, chooseLocation, showFive, showMoment
 
 bot = telebot.TeleBot(tkn.get_key('docs/token.txt'))
 
 commands = {
     '/help': help.Help(bot),
     '/start': start.Start(bot),
-    '/show_today': showToday.ShowToday(),
+    '/show_curr': showMoment.ShowMoment(bot),
+    '/show_today': showToday.ShowToday(bot),
     '/show_five': showFive.ShowFive(bot),
-    '/choose_location': chooseLocation.ChooseLocation()
+    '/choose_location': chooseLocation.ChooseLocation(bot)
 }
 
 

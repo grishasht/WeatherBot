@@ -1,7 +1,4 @@
-from src.main.python.controller.util import keys
-
-
-class Data:
+class Data():
     country = ""
     city = ""
 

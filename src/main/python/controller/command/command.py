@@ -1,9 +1,10 @@
 from src.main.python.controller.util import keys
+from src.main.python.model.userData import Data
 
 
 class Command:
     bot = None
-    api_key = keys.get_key('docs/api_key.txt')
+    data = Data()
 
     def __init__(self, b):
         self.bot = b
