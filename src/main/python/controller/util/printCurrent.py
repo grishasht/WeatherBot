@@ -7,7 +7,7 @@ from src.main.python.controller.util import keys
 
 class Print():
     data = None
-    api_key = keys.get_key('docs/api_key.txt')
+    api_key = keys.get_key('/home/hs/PycharmProjects/WeatherBot/docs/api_key.txt')
 
     def __init__(self, data):
         self.data = data
@@ -47,7 +47,7 @@ class Print():
 
             return True
         else:
-            bot.send_message(message.chat.id, 'City name is incorrect!'
+            bot.send_message(message.chat.id, 'The city name is incorrect!'
                                               '\nTry again')
             return False
 

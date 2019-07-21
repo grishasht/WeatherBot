@@ -54,7 +54,7 @@ class Print:
                 i = i + 1
             return True
         else:
-            bot.send_message(message.chat.id, 'Country or city name is incorrect!'
+            bot.send_message(message.chat.id, 'The city name is incorrect!'
                                               '\nTry again')
             return False
 

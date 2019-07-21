@@ -10,5 +10,4 @@ class ShowFive(Command):
         self.printFive = Print(self.data)
 
     def execute(self, bot, message):
-        bot.send_message(message.chat.id, 'Show three command!')
         self.printFive.print_forecast(bot, message)
