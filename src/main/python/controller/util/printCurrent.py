@@ -42,8 +42,7 @@ class Print():
             out = "Weather for the current moment\n"
             out += "Time: " + str(local_time.hour) \
                    + ":" + str(local_time.minute) + '\n'
-            out += "Time (local): " + str(_time.hour) \
-                   + ":" + str(_time.minute) + '\n\n'
+
             out += "Weather: " + weather['description'] + '\n'
             out += "Current temperature: " + \
                    str(round(main['temp'] - 273.15)) + ', \u2103\n'

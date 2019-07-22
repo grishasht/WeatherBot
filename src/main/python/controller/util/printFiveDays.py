@@ -37,9 +37,8 @@ class Print:
             curr.print_forecast(bot, message)
             while i < len(list_):
                 local_time, _time = self.utc_to_local(list_[i]['dt'], timezone)
-                out = "Date: " + local_time.strftime("%d.%d; %H:%M") + '\n'
-                out += "Date (local): " + \
-                       _time.strftime("%d.%d; %H:%M") + '\n\n'
+                out = "Date: " + \
+                      _time.strftime("%d.%d; %H:%M") + '\n\n'
                 weather = list_[i]['weather'][0]
                 out += "Weather: " + weather['description'] + '\n'
                 main_ = list_[i]['main']
