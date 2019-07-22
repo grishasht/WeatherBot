@@ -1,1 +1,1 @@
-web: python3 src/main/python/controller/commandFilter.py
+web: python3 commandFilter.py
