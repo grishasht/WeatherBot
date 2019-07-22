@@ -46,7 +46,7 @@ def getMessage():
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url=('https://telegram--weather-bot.com/' + token))
+    bot.set_webhook(url=('https://telegram--weather-bot.herokuapp.com/' + token))
     return "!", 200
 
 
