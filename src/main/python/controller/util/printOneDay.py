@@ -38,9 +38,7 @@ class Print:
             while 24 - _time.hour > 3 or i == len(list_) - 1:
                 local_time, _time = self.utc_to_local(list_[i]['dt'], timezone)
                 out = "Time: " + str(local_time.hour) + ":" \
-                      + str(local_time.minute) + '\n'
-                out += "Time (local): " + str(_time.hour) + ":" \
-                       + str(_time.minute) + '\n\n'
+                      + str(local_time.minute) + '\n\n'
                 weather = list_[i]['weather'][0]
                 out += "Weather: " + weather['description'] + '\n'
                 main_ = list_[i]['main']

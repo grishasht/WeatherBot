@@ -41,7 +41,7 @@ class Print():
             bot.send_message(message.chat.id, out)
             out = "Weather for the current moment\n"
             out += "Time: " + str(local_time.hour) \
-                   + ":" + str(local_time.minute) + '\n'
+                   + ":" + str(local_time.minute) + '\n\n'
 
             out += "Weather: " + weather['description'] + '\n'
             out += "Current temperature: " + \
@@ -64,4 +64,4 @@ class Print():
     def utc_to_local(self, utc_datetime, json):
         local_time = datetime.utcfromtimestamp(utc_datetime + json['timezone'])
         _time = datetime.fromtimestamp(utc_datetime)
-        return _time, local_time
+        return local_time, _time

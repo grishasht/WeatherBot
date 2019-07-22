@@ -38,7 +38,7 @@ class Print:
             while i < len(list_):
                 local_time, _time = self.utc_to_local(list_[i]['dt'], timezone)
                 out = "Date: " + \
-                      _time.strftime("%d.%d; %H:%M") + '\n\n'
+                      local_time.strftime("%d.%d; %H:%M") + '\n\n'
                 weather = list_[i]['weather'][0]
                 out += "Weather: " + weather['description'] + '\n'
                 main_ = list_[i]['main']
@@ -65,4 +65,4 @@ class Print:
     def utc_to_local(self, utc_datetime, timezone):
         local_time = datetime.utcfromtimestamp(utc_datetime + timezone)
         _time = datetime.fromtimestamp(utc_datetime)
-        return _time, local_time
+        return local_time, _time
