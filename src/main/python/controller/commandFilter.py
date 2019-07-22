@@ -1,14 +1,15 @@
-import time
+import os
 
 import telebot
-import src.main.python.controller.util.keys as tkn
-from telegram.ext import Updater, CommandHandler, \
-    MessageHandler, Filters, InlineQueryHandler, Dispatcher
+from flask import request, Flask
 
 from src.main.python.controller.command \
     import help, start, showToday, chooseLocation, showFive, showMoment
 
-bot = telebot.TeleBot(tkn.get_key('docs/token.txt'))
+token = "858880474:AAG6FSp0jmrcbdlglJJ9LFCarOtvds7wYF8"
+bot = telebot.TeleBot(token)
+server = Flask(__name__)
+# tkn.get_key('docs/token.txt')
 
 commands = {
     '/help': help.Help(bot),
@@ -45,14 +46,18 @@ def handle_messages(message):
                          'Sorry, you entered wrong command!')
 
 
-# @bot.add_channel_post_handler()
-# dp = Dispatcher(bot)
-#
-# dp.add_handler(MessageHandler("text"))
+@server.route('/' + token, methods=['POST'])
+def getMessage():
+    bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
+    return "!", 200
 
-# while True:
-#     try:
-#         bot.polling(none_stop=True, interval=0)
-#     except Exception as e:
-#         print(e)
-#         time.sleep(15)
+
+@server.route("/")
+def webhook():
+    bot.remove_webhook()
+    bot.set_webhook(url='https://telegram--weather-bot.com/' + token)
+    return "!", 200
+
+
+if __name__ == "__main__":
+    server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))

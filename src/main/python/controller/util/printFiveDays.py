@@ -6,7 +6,8 @@ from datetime import datetime
 
 class Print:
     data = None
-    api_key = keys.get_key('docs/api_key.txt')
+    # api_key = keys.get_key('docs/api_key.txt')
+    api_key = "08e3367a0319ad170280b418c668700f"
 
     def __init__(self, data):
         self.data = data
