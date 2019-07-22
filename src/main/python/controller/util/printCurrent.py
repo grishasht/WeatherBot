@@ -36,7 +36,7 @@ class Print():
             weather = json['weather'][0]
             main = json['main']
             wind = json['wind']
-            _time, local_time = self.utc_to_local(json['dt'], json)
+            local_time, _time = self.utc_to_local(json['dt'], json)
             out = json['sys']['country'] + ", " + json['name'] + "\n"
             bot.send_message(message.chat.id, out)
             out = "Weather for the current moment\n"
