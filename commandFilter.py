@@ -24,26 +24,17 @@ commands = {
     'Change location': chooseLocation.ChooseLocation(bot)
 }
 
-msg = None
-
-
-def get_msg():
-    return msg
-
-
-def get_chat_id():
-    return msg.chat.id
-
 
 @bot.message_handler(content_types=['text'])
 def handle_messages(message):
     try:
-        msg = message
-        print(message.chat.id)
         commands[message.text].execute(bot, message)
     except Exception:
         bot.send_message(message.chat.id,
                          'Sorry, you entered wrong command!')
+
+
+# bot.polling(none_stop=True, interval=0)
 
 
 @server.route('/' + token, methods=['POST'])
