@@ -1,1 +1,1 @@
-web: python commandFilter.py
+web: python3 commandFilter.py
