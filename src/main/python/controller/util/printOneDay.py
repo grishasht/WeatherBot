@@ -37,7 +37,9 @@ class Print:
             curr.print_forecast(bot, message)
             while 24 - _time.hour > 3 or i == len(list_) - 1:
                 local_time, _time = self.utc_to_local(list_[i]['dt'], timezone)
-                out = "Time: " + str(_time.hour) + ":" \
+                out = "Time: " + str(local_time.hour) + ":" \
+                      + str(local_time.minute) + '\n'
+                out += "Time (local): " + str(_time.hour) + ":" \
                        + str(_time.minute) + '\n\n'
                 weather = list_[i]['weather'][0]
                 out += "Weather: " + weather['description'] + '\n'
@@ -65,4 +67,4 @@ class Print:
     def utc_to_local(self, utc_datetime, timezone):
         local_time = datetime.utcfromtimestamp(utc_datetime + timezone)
         _time = datetime.fromtimestamp(utc_datetime)
-        return _time, local_time
+        return local_time, _time
