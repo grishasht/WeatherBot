@@ -12,9 +12,9 @@ class Print:
         self.data = data
 
     def get_forecast(self):
-        r = requests.get('http://api.openweathermap.org/data/2.5/forecast?q='
-                         + self.data.get_city() + ',' + self.data.get_country()
-                         + '&APPID=' + self.api_key)
+        r = requests.get('http://api.openweathermap.org/data/2.5/forecast?q=' +
+                         self.data.get_city() + ',' + self.data.get_country() +
+                         '&APPID=' + self.api_key)
         json_file = r.json()
         is_correct = self.check_response(json_file['cod'])
         if is_correct:
@@ -35,18 +35,21 @@ class Print:
             curr = printCurrent.Print(self.data)
             curr.print_forecast(bot, message)
             while i < len(list_):
-
                 local_time, _time = self.utc_to_local(list_[i]['dt'], timezone)
                 out = "Date: " + local_time.strftime("%d.%d; %H:%M") + '\n'
-                out += "Date (local): " + _time.strftime("%d.%d; %H:%M") + '\n\n'
+                out += "Date (local): " + \
+                       _time.strftime("%d.%d; %H:%M") + '\n\n'
                 weather = list_[i]['weather'][0]
                 out += "Weather: " + weather['description'] + '\n'
                 main_ = list_[i]['main']
-                out += "Current temperature: " + str(round(main_['temp'] - 273.15)) + ', \u2103\n'
+                out += "Current temperature: " + \
+                       str(round(main_['temp'] - 273.15)) + ', \u2103\n'
                 main_ = list_[i]['main']
-                out += "Min temperature: " + str(round(main_['temp_min'] - 273.15)) + ', \u2103\n'
+                out += "Min temperature: " + \
+                       str(round(main_['temp_min'] - 273.15)) + ', \u2103\n'
                 main_ = list_[i]['main']
-                out += "Max temperature: " + str(round(main_['temp_max'] - 273.15)) + ', \u2103\n'
+                out += "Max temperature: " + \
+                       str(round(main_['temp_max'] - 273.15)) + ', \u2103\n'
                 wind = list_[i]['wind']
                 out += "Speed of wind: " + str(wind['speed']) + ', m/sec'
                 bot.send_message(message.chat.id, out)
@@ -54,8 +57,9 @@ class Print:
                 i = i + 1
             return True
         else:
-            bot.send_message(message.chat.id, 'Country or city name is incorrect!'
-                                              '\nTry again')
+            bot.send_message(message.chat.id,
+                             'Country or city name is incorrect!'
+                             '\nTry again')
             return False
 
     def utc_to_local(self, utc_datetime, timezone):

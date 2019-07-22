@@ -35,18 +35,22 @@ class Print:
             curr = printCurrent.Print(self.data)
             curr.print_forecast(bot, message)
             while 24 - _time.hour > 3 or i == len(list_) - 1:
-
                 local_time, _time = self.utc_to_local(list_[i]['dt'], timezone)
-                out = "Time: " + str(local_time.hour) + ":" + str(local_time.minute) + '\n'
-                out += "Time (local): " + str(_time.hour) + ":" + str(_time.minute) + '\n\n'
+                out = "Time: " + str(local_time.hour) + ":" \
+                      + str(local_time.minute) + '\n'
+                out += "Time (local): " + str(_time.hour) + ":" \
+                       + str(_time.minute) + '\n\n'
                 weather = list_[i]['weather'][0]
                 out += "Weather: " + weather['description'] + '\n'
                 main_ = list_[i]['main']
-                out += "Current temperature: " + str(round(main_['temp'] - 273.15)) + ', \u2103\n'
+                out += "Current temperature: " + \
+                       str(round(main_['temp'] - 273.15)) + ', \u2103\n'
                 main_ = list_[i]['main']
-                out += "Min temperature: " + str(round(main_['temp_min'] - 273.15)) + ', \u2103\n'
+                out += "Min temperature: " + \
+                       str(round(main_['temp_min'] - 273.15)) + ', \u2103\n'
                 main_ = list_[i]['main']
-                out += "Max temperature: " + str(round(main_['temp_max'] - 273.15)) + ', \u2103\n'
+                out += "Max temperature: " + \
+                       str(round(main_['temp_max'] - 273.15)) + ', \u2103\n'
                 wind = list_[i]['wind']
                 out += "Speed of wind: " + str(wind['speed']) + ', m/sec'
                 bot.send_message(message.chat.id, out)
@@ -54,8 +58,9 @@ class Print:
                 i = i + 1
             return True
         else:
-            bot.send_message(message.chat.id, 'The city name is incorrect!'
-                                              '\nTry again')
+            if message is not None:
+                bot.send_message(message.chat.id,
+                                 'The city name is incorrect!\nTry again')
             return False
 
     def utc_to_local(self, utc_datetime, timezone):

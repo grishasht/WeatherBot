@@ -1,4 +1,4 @@
-import unittest
+import pytest
 from unittest import TestCase
 
 import telebot
@@ -18,25 +18,26 @@ class TestPrint(TestCase):
 
     def test_get_forecast_should_return_correct(self):
         result = self.print_curr.get_forecast()
-        self.assertEqual(True, bool(result))
+        assert bool(result) is True
 
     def test_get_forecast_should_return_incorrect(self):
         self.data.set_city("kyivvvv")
         self.print_curr = printCurrent.Print(self.data)
         result = self.print_curr.get_forecast()
-        self.assertNotEqual(True, bool(result))
+        assert bool(result) is not True
 
     def test_check_response_should_return_correct(self):
         json_ = self.print_curr.get_forecast()
         result = self.print_curr.check_response(json_['cod'])
-        self.assertEqual(True, result)
+        assert result is True
 
     def test_check_response_should_return_incorrect(self):
         self.data.set_city("kyvvvv")
         result = self.print_curr.get_forecast()
-        self.assertNotEqual(True, result)
+        assert result is not True
 
-    @unittest.expectedFailure
     def test_print_forecast_should_return_incorrect(self):
-        result = self.print_curr.print_forecast(telebot.AsyncTeleBot, None)
-        self.assertEqual(Exception, result)
+        self.data.set_city("kyvvvv")
+        result = self.print_curr.print_forecast(telebot.TeleBot, None)
+        expected = False
+        assert result is expected

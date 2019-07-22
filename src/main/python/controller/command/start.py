@@ -16,7 +16,8 @@ class Start(Command):
         self.printOne = Print(self.data)
 
     def execute(self, bot, message):
-        self.bot.send_message(message.chat.id, "Enter country\nExample: Ukraine or UA",
+        self.bot.send_message(message.chat.id,
+                              "Enter country\nExample: Ukraine or UA",
                               reply_markup=keyboard1)
         self.bot.register_next_step_handler(message, self.get_country)
 
