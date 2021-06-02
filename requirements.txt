@@ -37,7 +37,7 @@ tailer==0.4.1
 tblib==1.4.0
 telegram==0.0.1
 unittest-xml-reporting==2.5.1
-urllib3==1.25.3
+urllib3==1.26.5
 wcwidth==0.1.7
 Werkzeug==0.15.4
 zipp==0.5.2
